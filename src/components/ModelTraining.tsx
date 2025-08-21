@@ -44,24 +44,24 @@ export default function ModelTraining() {
   return (
     <section className="neuro-section" id="model">
       <div className="container mx-auto">
-        <h2 className="text-2xl font-bold mb-4">Model Training & Prediction</h2>
+        <h2 className="text-2xl font-bold mb-4 dark:text-white">Model Training & Prediction</h2>
         
-        <Card>
+        <Card className="dark:bg-neuro-gray-900 dark:border-neuro-gray-700">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Brain className="h-5 w-5 text-neuro-blue" />
+            <CardTitle className="flex items-center gap-2 dark:text-white">
+              <Brain className="h-5 w-5 text-neuro-blue dark:text-neuro-lightblue" />
               Machine Learning Model
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="dark:text-neuro-gray-400">
               Train a model to classify EEG signals and predict user intent
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="model">
-              <TabsList className="mb-6 w-full">
-                <TabsTrigger value="model" className="flex-1">Model Selection</TabsTrigger>
-                <TabsTrigger value="params" className="flex-1">Parameters</TabsTrigger>
-                <TabsTrigger value="training" className="flex-1">Training</TabsTrigger>
+              <TabsList className="mb-6 w-full dark:bg-neuro-gray-800">
+                <TabsTrigger value="model" className="flex-1 dark:text-neuro-gray-300 dark:data-[state=active]:bg-neuro-gray-700 dark:data-[state=active]:text-white">Model Selection</TabsTrigger>
+                <TabsTrigger value="params" className="flex-1 dark:text-neuro-gray-300 dark:data-[state=active]:bg-neuro-gray-700 dark:data-[state=active]:text-white">Parameters</TabsTrigger>
+                <TabsTrigger value="training" className="flex-1 dark:text-neuro-gray-300 dark:data-[state=active]:bg-neuro-gray-700 dark:data-[state=active]:text-white">Training</TabsTrigger>
               </TabsList>
               
               <TabsContent value="model">
@@ -69,37 +69,35 @@ export default function ModelTraining() {
                   {models.map((model) => (
                     <div 
                       key={model.id}
-                      className={`p-5 border rounded-lg cursor-pointer transition-all ${
-                        selectedModel === model.id ? "ring-2 ring-neuro-blue/50 bg-neuro-blue/5" : "hover:bg-neuro-gray-50"
-                      }`}
+                      className={`p-5 border rounded-lg cursor-pointer transition-all ${selectedModel === model.id ? "ring-2 ring-neuro-blue/50 bg-neuro-blue/5 dark:ring-neuro-lightblue/50 dark:bg-neuro-lightblue/5" : "hover:bg-neuro-gray-50 dark:border-neuro-gray-700 dark:hover:bg-neuro-gray-800"}`}
                       onClick={() => handleModelSelect(model.id)}
                     >
-                      <h3 className="font-medium mb-1 flex items-center gap-1.5">
-                        <div className={`w-2 h-2 rounded-full ${selectedModel === model.id ? "bg-neuro-blue" : "bg-neuro-gray-400"}`}></div>
+                      <h3 className="font-medium mb-1 flex items-center gap-1.5 dark:text-white">
+                        <div className={`w-2 h-2 rounded-full ${selectedModel === model.id ? "bg-neuro-blue dark:bg-neuro-lightblue" : "bg-neuro-gray-400 dark:bg-neuro-gray-500"}`}></div>
                         {model.name}
                       </h3>
-                      <p className="text-xs text-neuro-gray-500 mb-2">
+                      <p className="text-xs text-neuro-gray-500 mb-2 dark:text-neuro-gray-400">
                         {model.description}
                       </p>
                       <div className="flex justify-between text-xs">
-                        <span className="text-neuro-gray-500">Accuracy:</span>
-                        <span className={`font-medium ${selectedModel === model.id ? "text-neuro-blue" : "text-neuro-gray-500"}`}>
+                        <span className="text-neuro-gray-500 dark:text-neuro-gray-400">Accuracy:</span>
+                        <span className={`font-medium ${selectedModel === model.id ? "text-neuro-blue dark:text-neuro-lightblue" : "text-neuro-gray-500 dark:text-neuro-gray-400"}`}>
                           {model.accuracy}
                         </span>
                       </div>
                     </div>
                   ))}
                   
-                  <div className="p-5 border border-dashed rounded-lg cursor-pointer transition-all flex items-center justify-center hover:bg-neuro-gray-50">
-                    <span className="text-neuro-gray-500 text-sm">+ Custom Model</span>
+                  <div className="p-5 border border-dashed rounded-lg cursor-pointer transition-all flex items-center justify-center hover:bg-neuro-gray-50 dark:border-neuro-gray-700 dark:hover:bg-neuro-gray-800">
+                    <span className="text-neuro-gray-500 text-sm dark:text-neuro-gray-400">+ Custom Model</span>
                   </div>
                 </div>
                 
                 <div className="mt-6">
-                  <h3 className="font-medium mb-3">Model Description</h3>
-                  <div className="bg-neuro-gray-100 rounded-lg p-4">
+                  <h3 className="font-medium mb-3 dark:text-white">Model Description</h3>
+                  <div className="bg-neuro-gray-100 rounded-lg p-4 dark:bg-neuro-gray-800">
                     {selectedModel === "svm" && (
-                      <p className="text-sm text-neuro-gray-700">
+                      <p className="text-sm text-neuro-gray-700 dark:text-neuro-gray-300">
                         <strong>Support Vector Machine (SVM)</strong> is a supervised learning method that finds the optimal hyperplane 
                         to separate classes in high-dimensional space. It works well for binary classification problems like determining 
                         left vs. right hand movement from EEG signals. SVMs are particularly effective when the number of features exceeds 
@@ -107,28 +105,28 @@ export default function ModelTraining() {
                       </p>
                     )}
                     {selectedModel === "lda" && (
-                      <p className="text-sm text-neuro-gray-700">
+                      <p className="text-sm text-neuro-gray-700 dark:text-neuro-gray-300">
                         <strong>Linear Discriminant Analysis (LDA)</strong> is a dimensionality reduction technique that also works as a classifier.
                         It projects features onto a lower-dimensional space while maximizing class separability. LDA is computationally efficient
                         and works well for EEG data when the assumptions of normal distribution and equal covariance matrices are met.
                       </p>
                     )}
                     {selectedModel === "knn" && (
-                      <p className="text-sm text-neuro-gray-700">
+                      <p className="text-sm text-neuro-gray-700 dark:text-neuro-gray-300">
                         <strong>K-Nearest Neighbors (KNN)</strong> is a non-parametric method that classifies data points based on the majority
                         class among their k-nearest neighbors. It's simple to implement and understand, but can be computationally expensive for large datasets.
                         KNN is useful when decision boundaries are irregular and can provide good results for EEG classification with proper feature extraction.
                       </p>
                     )}
                     {selectedModel === "rf" && (
-                      <p className="text-sm text-neuro-gray-700">
+                      <p className="text-sm text-neuro-gray-700 dark:text-neuro-gray-300">
                         <strong>Random Forest</strong> is an ensemble learning method that constructs multiple decision trees during training.
                         It's resistant to overfitting and can handle high-dimensional data well. For EEG classification, Random Forest can capture complex
                         relationships in the data and provide robust predictions even with noisy signals.
                       </p>
                     )}
                     {selectedModel === "cnn" && (
-                      <p className="text-sm text-neuro-gray-700">
+                      <p className="text-sm text-neuro-gray-700 dark:text-neuro-gray-300">
                         <strong>Convolutional Neural Network (CNN)</strong> is a deep learning architecture designed to process data with grid-like topology.
                         For EEG data, CNNs can automatically learn spatial filters and extract relevant features across channels and time.
                         They're particularly effective for capturing spatio-temporal patterns in brain activity signals.
@@ -143,27 +141,27 @@ export default function ModelTraining() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-4">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">Kernel</label>
+                        <label className="text-sm font-medium dark:text-neuro-gray-300">Kernel</label>
                         <Select defaultValue="rbf">
-                          <SelectTrigger className="w-full">
+                          <SelectTrigger className="w-full dark:bg-neuro-gray-800 dark:text-white dark:border-neuro-gray-700">
                             <SelectValue placeholder="Select kernel" />
                           </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="linear">Linear</SelectItem>
-                            <SelectItem value="rbf">Radial Basis Function (RBF)</SelectItem>
-                            <SelectItem value="poly">Polynomial</SelectItem>
-                            <SelectItem value="sigmoid">Sigmoid</SelectItem>
+                          <SelectContent className="dark:bg-neuro-gray-800 dark:text-white dark:border-neuro-gray-700">
+                            <SelectItem value="linear" className="dark:hover:bg-neuro-gray-700">Linear</SelectItem>
+                            <SelectItem value="rbf" className="dark:hover:bg-neuro-gray-700">Radial Basis Function (RBF)</SelectItem>
+                            <SelectItem value="poly" className="dark:hover:bg-neuro-gray-700">Polynomial</SelectItem>
+                            <SelectItem value="sigmoid" className="dark:hover:bg-neuro-gray-700">Sigmoid</SelectItem>
                           </SelectContent>
                         </Select>
-                        <p className="text-xs text-neuro-gray-500">
+                        <p className="text-xs text-neuro-gray-500 dark:text-neuro-gray-400">
                           RBF kernel works well for non-linear EEG data classification
                         </p>
                       </div>
                       
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <label className="text-sm font-medium">Regularization (C)</label>
-                          <span className="text-sm text-neuro-blue">1.0</span>
+                          <label className="text-sm font-medium dark:text-neuro-gray-300">Regularization (C)</label>
+                          <span className="text-sm text-neuro-blue dark:text-neuro-lightblue">1.0</span>
                         </div>
                         <Slider 
                           defaultValue={[1]} 
@@ -172,7 +170,7 @@ export default function ModelTraining() {
                           step={0.01}
                           className="py-4"
                         />
-                        <div className="flex justify-between text-xs text-neuro-gray-500">
+                        <div className="flex justify-between text-xs text-neuro-gray-500 dark:text-neuro-gray-400">
                           <span>0.01</span>
                           <span>1.0</span>
                           <span>10.0</span>
@@ -181,8 +179,8 @@ export default function ModelTraining() {
                       
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <label className="text-sm font-medium">Gamma</label>
-                          <span className="text-sm text-neuro-blue">0.1</span>
+                          <label className="text-sm font-medium dark:text-neuro-gray-300">Gamma</label>
+                          <span className="text-sm text-neuro-blue dark:text-neuro-lightblue">0.1</span>
                         </div>
                         <Slider 
                           defaultValue={[0.1]} 
@@ -191,7 +189,7 @@ export default function ModelTraining() {
                           step={0.001}
                           className="py-4"
                         />
-                        <div className="flex justify-between text-xs text-neuro-gray-500">
+                        <div className="flex justify-between text-xs text-neuro-gray-500 dark:text-neuro-gray-400">
                           <span>0.001</span>
                           <span>0.1</span>
                           <span>1.0</span>
@@ -201,46 +199,46 @@ export default function ModelTraining() {
                     
                     <div className="space-y-4">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">Cross-validation</label>
+                        <label className="text-sm font-medium dark:text-neuro-gray-300">Cross-validation</label>
                         <Select defaultValue="kfold">
-                          <SelectTrigger className="w-full">
+                          <SelectTrigger className="w-full dark:bg-neuro-gray-800 dark:text-white dark:border-neuro-gray-700">
                             <SelectValue placeholder="Select validation method" />
                           </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="kfold">K-Fold (k=5)</SelectItem>
-                            <SelectItem value="loocv">Leave-One-Out CV</SelectItem>
-                            <SelectItem value="holdout">Holdout (80/20)</SelectItem>
+                          <SelectContent className="dark:bg-neuro-gray-800 dark:text-white dark:border-neuro-gray-700">
+                            <SelectItem value="kfold" className="dark:hover:bg-neuro-gray-700">K-Fold (k=5)</SelectItem>
+                            <SelectItem value="loocv" className="dark:hover:bg-neuro-gray-700">Leave-One-Out CV</SelectItem>
+                            <SelectItem value="holdout" className="dark:hover:bg-neuro-gray-700">Holdout (80/20)</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
                       
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">Class Weights</label>
+                        <label className="text-sm font-medium dark:text-neuro-gray-300">Class Weights</label>
                         <Select defaultValue="balanced">
-                          <SelectTrigger className="w-full">
+                          <SelectTrigger className="w-full dark:bg-neuro-gray-800 dark:text-white dark:border-neuro-gray-700">
                             <SelectValue placeholder="Select weighting" />
                           </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="balanced">Balanced</SelectItem>
-                            <SelectItem value="none">None</SelectItem>
-                            <SelectItem value="custom">Custom</SelectItem>
+                          <SelectContent className="dark:bg-neuro-gray-800 dark:text-white dark:border-neuro-gray-700">
+                            <SelectItem value="balanced" className="dark:hover:bg-neuro-gray-700">Balanced</SelectItem>
+                            <SelectItem value="none" className="dark:hover:bg-neuro-gray-700">None</SelectItem>
+                            <SelectItem value="custom" className="dark:hover:bg-neuro-gray-700">Custom</SelectItem>
                           </SelectContent>
                         </Select>
-                        <p className="text-xs text-neuro-gray-500">
+                        <p className="text-xs text-neuro-gray-500 dark:text-neuro-gray-400">
                           Adjust for imbalanced data between movement types
                         </p>
                       </div>
                       
                       <div className="flex items-center space-x-2 pt-4">
                         <Checkbox id="probability" defaultChecked />
-                        <label htmlFor="probability" className="text-sm font-medium leading-none">
+                        <label htmlFor="probability" className="text-sm font-medium leading-none dark:text-neuro-gray-300">
                           Enable probability estimates
                         </label>
                       </div>
                       
                       <div className="flex items-center space-x-2">
                         <Checkbox id="standardize" defaultChecked />
-                        <label htmlFor="standardize" className="text-sm font-medium leading-none">
+                        <label htmlFor="standardize" className="text-sm font-medium leading-none dark:text-neuro-gray-300">
                           Standardize features
                         </label>
                       </div>
@@ -248,18 +246,18 @@ export default function ModelTraining() {
                   </div>
                   
                   <div className="pt-4">
-                    <h3 className="font-medium mb-3">Advanced Options</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-neuro-gray-100 rounded-lg p-4">
+                    <h3 className="font-medium mb-3 dark:text-white">Advanced Options</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-neuro-gray-100 rounded-lg p-4 dark:bg-neuro-gray-800">
                       <div className="space-y-2">
                         <div className="flex items-center space-x-2">
                           <Checkbox id="cache" defaultChecked />
-                          <label htmlFor="cache" className="text-sm leading-none">
+                          <label htmlFor="cache" className="text-sm leading-none dark:text-neuro-gray-300">
                             Enable cache (500MB)
                           </label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox id="shrinking" defaultChecked />
-                          <label htmlFor="shrinking" className="text-sm leading-none">
+                          <label htmlFor="shrinking" className="text-sm leading-none dark:text-neuro-gray-300">
                             Use shrinking heuristic
                           </label>
                         </div>
@@ -268,13 +266,13 @@ export default function ModelTraining() {
                       <div className="space-y-2">
                         <div className="flex items-center space-x-2">
                           <Checkbox id="verbose" />
-                          <label htmlFor="verbose" className="text-sm leading-none">
+                          <label htmlFor="verbose" className="text-sm leading-none dark:text-neuro-gray-300">
                             Verbose output
                           </label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox id="decision-function" />
-                          <label htmlFor="decision-function" className="text-sm leading-none">
+                          <label htmlFor="decision-function" className="text-sm leading-none dark:text-neuro-gray-300">
                             Show decision function
                           </label>
                         </div>
@@ -287,35 +285,35 @@ export default function ModelTraining() {
               <TabsContent value="training">
                 <div className="space-y-6">
                   <div className="space-y-3">
-                    <h3 className="font-medium">Dataset Split</h3>
+                    <h3 className="font-medium dark:text-white">Dataset Split</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="p-4 bg-neuro-gray-100 rounded-lg">
+                      <div className="p-4 bg-neuro-gray-100 rounded-lg dark:bg-neuro-gray-800">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-sm font-medium">Training Set</span>
-                          <span className="text-sm text-neuro-blue">70%</span>
+                          <span className="text-sm font-medium dark:text-white">Training Set</span>
+                          <span className="text-sm text-neuro-blue dark:text-neuro-lightblue">70%</span>
                         </div>
-                        <div className="w-full bg-neuro-gray-200 rounded-full h-2">
-                          <div className="bg-neuro-blue h-2 rounded-full" style={{ width: "70%" }}></div>
+                        <div className="w-full bg-neuro-gray-200 rounded-full h-2 dark:bg-neuro-gray-700">
+                          <div className="bg-neuro-blue h-2 rounded-full dark:bg-neuro-lightblue" style={{ width: "70%" }}></div>
                         </div>
                       </div>
                       
-                      <div className="p-4 bg-neuro-gray-100 rounded-lg">
+                      <div className="p-4 bg-neuro-gray-100 rounded-lg dark:bg-neuro-gray-800">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-sm font-medium">Validation Set</span>
-                          <span className="text-sm text-neuro-blue">15%</span>
+                          <span className="text-sm font-medium dark:text-white">Validation Set</span>
+                          <span className="text-sm text-neuro-blue dark:text-neuro-lightblue">15%</span>
                         </div>
-                        <div className="w-full bg-neuro-gray-200 rounded-full h-2">
-                          <div className="bg-neuro-blue h-2 rounded-full" style={{ width: "15%" }}></div>
+                        <div className="w-full bg-neuro-gray-200 rounded-full h-2 dark:bg-neuro-gray-700">
+                          <div className="bg-neuro-blue h-2 rounded-full dark:bg-neuro-lightblue" style={{ width: "15%" }}></div>
                         </div>
                       </div>
                       
-                      <div className="p-4 bg-neuro-gray-100 rounded-lg">
+                      <div className="p-4 bg-neuro-gray-100 rounded-lg dark:bg-neuro-gray-800">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-sm font-medium">Test Set</span>
-                          <span className="text-sm text-neuro-blue">15%</span>
+                          <span className="text-sm font-medium dark:text-white">Test Set</span>
+                          <span className="text-sm text-neuro-blue dark:text-neuro-lightblue">15%</span>
                         </div>
-                        <div className="w-full bg-neuro-gray-200 rounded-full h-2">
-                          <div className="bg-neuro-blue h-2 rounded-full" style={{ width: "15%" }}></div>
+                        <div className="w-full bg-neuro-gray-200 rounded-full h-2 dark:bg-neuro-gray-700">
+                          <div className="bg-neuro-blue h-2 rounded-full dark:bg-neuro-lightblue" style={{ width: "15%" }}></div>
                         </div>
                       </div>
                     </div>
@@ -323,35 +321,35 @@ export default function ModelTraining() {
                   
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-medium">Training Progress</h3>
-                      {isTraining && <span className="text-xs text-neuro-blue animate-pulse">Training in progress...</span>}
+                      <h3 className="font-medium dark:text-white">Training Progress</h3>
+                      {isTraining && <span className="text-xs text-neuro-blue animate-pulse dark:text-neuro-lightblue">Training in progress...</span>}
                     </div>
                     
-                    <div className="p-4 border rounded-lg space-y-4">
+                    <div className="p-4 border rounded-lg space-y-4 dark:border-neuro-gray-700">
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm">Overall Progress</span>
-                          <span className="text-sm text-neuro-blue">{progress}%</span>
+                          <span className="text-sm dark:text-white">Overall Progress</span>
+                          <span className="text-sm text-neuro-blue dark:text-neuro-lightblue">{progress}%</span>
                         </div>
-                        <Progress value={progress} className="h-2" />
+                        <Progress value={progress} className="h-2 dark:bg-neuro-gray-700" />
                       </div>
                       
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <div className="flex items-center justify-between text-xs">
-                            <span>Epochs</span>
-                            <span>{isTraining ? Math.floor(progress / 10) : 10}/10</span>
+                            <span className="dark:text-neuro-gray-300">Epochs</span>
+                            <span className="dark:text-neuro-gray-300">{isTraining ? Math.floor(progress / 10) : 10}/10</span>
                           </div>
                         </div>
                         <div>
                           <div className="flex items-center justify-between text-xs">
-                            <span>Current Loss</span>
-                            <span>{isTraining ? (1 - progress / 100).toFixed(3) : "0.135"}</span>
+                            <span className="dark:text-neuro-gray-300">Current Loss</span>
+                            <span className="dark:text-neuro-gray-300">{isTraining ? (1 - progress / 100).toFixed(3) : "0.135"}</span>
                           </div>
                         </div>
                       </div>
                       
-                      <div className="h-[120px] bg-neuro-gray-100 rounded-md p-2 overflow-y-auto font-mono text-xs text-neuro-gray-600">
+                      <div className="h-[120px] bg-neuro-gray-100 rounded-md p-2 overflow-y-auto font-mono text-xs text-neuro-gray-600 dark:bg-neuro-gray-800 dark:text-neuro-gray-400">
                         {"> "}Starting SVM training with RBF kernel...<br />
                         {isTraining && progress > 20 && <>{"> "}Fold 1/5: Accuracy 89.2%<br /></>}
                         {isTraining && progress > 40 && <>{"> "}Fold 2/5: Accuracy 87.5%<br /></>}
@@ -364,7 +362,7 @@ export default function ModelTraining() {
                   
                   <div className="flex items-center justify-end gap-3">
                     <button 
-                      className="py-2 px-4 rounded-md border border-neuro-gray-300 text-neuro-gray-600 hover:bg-neuro-gray-100 transition-colors"
+                      className="py-2 px-4 rounded-md border border-neuro-gray-300 text-neuro-gray-600 hover:bg-neuro-gray-100 transition-colors dark:border-neuro-gray-700 dark:text-neuro-gray-300 dark:hover:bg-neuro-gray-800"
                       disabled={isTraining}
                     >
                       Reset

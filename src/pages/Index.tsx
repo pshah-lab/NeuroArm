@@ -12,14 +12,14 @@ import { Brain, Github, ExternalLink } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background wave-bg">
+    <div className="min-h-screen bg-background dark:bg-black dark:text-white wave-bg">
       <ScrollArea className="h-screen">
         <Navbar />
         <div className="pb-16 pt-16">
           <Header />
           
           <main>
-            <div className="bg-gradient-to-b from-neuro-blue/5 to-transparent">
+            <div className="bg-gradient-to-b from-neuro-blue/5 to-transparent dark:from-neuro-darkblue/10">
               <FileUpload />
             </div>
             
@@ -31,7 +31,7 @@ const Index = () => {
               <FilterFeatures />
             </div>
             
-            <div className="bg-gradient-to-b from-neuro-blue/5 to-transparent">
+            <div className="bg-gradient-to-b from-neuro-blue/5 to-transparent dark:from-neuro-darkblue/10">
               <ModelTraining />
             </div>
             
@@ -39,7 +39,7 @@ const Index = () => {
             <About />
           </main>
           
-          <footer className="mt-16 py-12 border-t bg-neuro-gray-50">
+          <footer className="mt-16 py-12 border-t bg-neuro-gray-50 dark:bg-black dark:border-neuro-gray-700">
             <div className="container mx-auto">
               <div className="flex flex-col md:flex-row justify-between items-center mb-8">
                 <div className="flex items-center gap-2 mb-4 md:mb-0">
@@ -50,10 +50,10 @@ const Index = () => {
                 </div>
                 
                 <div className="flex gap-6">
-                  <a href="#" className="text-neuro-gray-500 hover:text-neuro-blue transition-colors">
+                  <a href="#" className="text-neuro-gray-500 hover:text-neuro-blue transition-colors dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">
                     <Github className="h-5 w-5" />
                   </a>
-                  <a href="#" className="text-neuro-gray-500 hover:text-neuro-blue transition-colors">
+                  <a href="#" className="text-neuro-gray-500 hover:text-neuro-blue transition-colors dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">
                     <ExternalLink className="h-5 w-5" />
                   </a>
                 </div>
@@ -63,38 +63,38 @@ const Index = () => {
                 <div>
                   <h4 className="font-medium mb-3">About</h4>
                   <ul className="space-y-2 text-sm">
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Project</a></li>
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Team</a></li>
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Research</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Project</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Team</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Research</a></li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="font-medium mb-3">Resources</h4>
                   <ul className="space-y-2 text-sm">
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Documentation</a></li>
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Tutorials</a></li>
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">API</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Documentation</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Tutorials</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">API</a></li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="font-medium mb-3">Community</h4>
                   <ul className="space-y-2 text-sm">
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Forum</a></li>
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Discord</a></li>
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Events</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Forum</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Discord</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Events</a></li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="font-medium mb-3">Legal</h4>
                   <ul className="space-y-2 text-sm">
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Privacy Policy</a></li>
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">Terms of Service</a></li>
-                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue">License</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Privacy Policy</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">Terms of Service</a></li>
+                    <li><a href="#" className="text-neuro-gray-500 hover:text-neuro-blue dark:text-neuro-gray-400 dark:hover:text-neuro-lightblue">License</a></li>
                   </ul>
                 </div>
               </div>
               
-              <div className="border-t pt-8 text-center text-neuro-gray-500 text-sm">
+              <div className="border-t pt-8 text-center text-neuro-gray-500 text-sm dark:border-neuro-gray-700 dark:text-neuro-gray-400">
                 <p>NeuroArm BCI – Brain-Computer Interface Signal Classifier</p>
                 <p className="mt-1 text-xs">© {new Date().getFullYear()} All Rights Reserved</p>
               </div>

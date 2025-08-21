@@ -82,22 +82,22 @@ export default function FileUpload() {
   return (
     <section className="neuro-section py-12" id="upload">
       <div className="container mx-auto">
-        <h2 className="text-2xl font-bold mb-6">Upload EEG Data</h2>
+        <h2 className="text-2xl font-bold mb-6 dark:text-white">Upload EEG Data</h2>
         
-        <Card className="border border-neuro-gray-200 shadow-sm overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-neuro-blue/5 to-transparent">
-            <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5 text-neuro-blue" />
+        <Card className="border border-neuro-gray-200 shadow-sm overflow-hidden dark:bg-neuro-gray-900 dark:border-neuro-gray-700">
+          <CardHeader className="bg-gradient-to-r from-neuro-blue/5 to-transparent dark:from-neuro-darkblue/10">
+            <CardTitle className="flex items-center gap-2 dark:text-white">
+              <FileText className="h-5 w-5 text-neuro-blue dark:text-neuro-lightblue" />
               EEG Data Upload
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="dark:text-neuro-gray-400">
               Upload EEG file in .mat, .csv, or .xlsx format (OpenBCI / Physionet compatible)
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div
               className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-all duration-300 ${
-                isDragging ? "border-neuro-blue bg-neuro-blue/5 scale-[1.02]" : "border-neuro-gray-300"
+                isDragging ? "border-neuro-blue bg-neuro-blue/5 scale-[1.02] dark:border-neuro-lightblue dark:bg-neuro-lightblue/5" : "border-neuro-gray-300 dark:border-neuro-gray-600"
               }`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
@@ -114,33 +114,33 @@ export default function FileUpload() {
               
               {file ? (
                 <div className="space-y-4">
-                  <div className="mx-auto bg-neuro-blue/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                    <CheckCircle className="h-8 w-8 text-neuro-blue" />
+                  <div className="mx-auto bg-neuro-blue/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 dark:bg-neuro-lightblue/10">
+                    <CheckCircle className="h-8 w-8 text-neuro-blue dark:text-neuro-lightblue" />
                   </div>
-                  <p className="text-lg font-medium">{file.name}</p>
+                  <p className="text-lg font-medium dark:text-white">{file.name}</p>
                   <div className="flex items-center justify-center gap-3">
-                    <p className="text-sm text-neuro-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
-                    <Badge variant="outline" className="text-xs">
+                    <p className="text-sm text-neuro-gray-500 dark:text-neuro-gray-400">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                    <Badge variant="outline" className="text-xs dark:text-neuro-gray-300 dark:border-neuro-gray-600">
                       {file.name.substring(file.name.lastIndexOf('.')+1).toUpperCase()}
                     </Badge>
                   </div>
                   <Button variant="outline" size="sm" onClick={(e) => {
                     e.stopPropagation();
                     setFile(null);
-                  }}>
+                  }} className="dark:text-neuro-lightblue dark:border-neuro-lightblue dark:hover:bg-neuro-lightblue/10">
                     Change File
                   </Button>
                 </div>
               ) : (
                 <>
-                  <div className="mx-auto bg-neuro-gray-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                    <Upload className="h-8 w-8 text-neuro-gray-500" />
+                  <div className="mx-auto bg-neuro-gray-100 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 dark:bg-neuro-gray-800">
+                    <Upload className="h-8 w-8 text-neuro-gray-500 dark:text-neuro-gray-300" />
                   </div>
-                  <p className="text-lg font-medium">Drop your EEG file here</p>
-                  <p className="text-sm text-neuro-gray-500 mt-1">or click to browse</p>
+                  <p className="text-lg font-medium dark:text-white">Drop your EEG file here</p>
+                  <p className="text-sm text-neuro-gray-500 mt-1 dark:text-neuro-gray-400">or click to browse</p>
                   <div className="flex flex-wrap gap-2 justify-center mt-4">
                     {acceptedFormats.map(format => (
-                      <Badge key={format} variant="secondary" className="text-xs">
+                      <Badge key={format} variant="secondary" className="text-xs dark:bg-neuro-gray-700 dark:text-neuro-gray-200">
                         {format}
                       </Badge>
                     ))}
@@ -149,9 +149,9 @@ export default function FileUpload() {
               )}
             </div>
             
-            <Alert className="mt-4 bg-neuro-blue/5 border-neuro-blue/20">
-              <Info className="h-4 w-4" />
-              <AlertDescription className="text-xs text-neuro-gray-600">
+            <Alert className="mt-4 bg-neuro-blue/5 border-neuro-blue/20 dark:bg-neuro-lightblue/5 dark:border-neuro-lightblue/20">
+              <Info className="h-4 w-4 dark:text-neuro-lightblue" />
+              <AlertDescription className="text-xs text-neuro-gray-600 dark:text-neuro-gray-400">
                 Supported file formats include .mat (MATLAB), .csv (comma-separated values), and .xlsx (Excel). 
                 Maximum file size: 50MB. For best results, ensure your data follows standard EEG formatting.
               </AlertDescription>
